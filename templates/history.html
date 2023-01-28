@@ -1,0 +1,139 @@
+<h2>SLM HISTORY</h2>
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+th,td{
+	text-align:center;
+	padding:10px;
+}
+#text{
+	display:table;
+	margin:100 auto;
+
+</style>
+
+
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<div id="text">
+	<label>SLM in Progress:</label>
+<table>
+	<tr>
+		<th>SLM Number</th>
+		<th>Responsible</th>
+		<th>Open Date</th>
+		<th>Budget</th>
+		<th>ECU</th>
+		<th>Supplier</th>
+		<th>Leading Vehicle Project</th>
+		<th>Description</th>
+		<th>Status</th>
+		<th>Components Status</th>
+		<th>Circuit Status</th>
+		<th>Enviro Status</th>
+		<th>Process Status</th>
+		<th>EMC Status</th>
+	</tr>
+	{% for i in objects %}
+	{% if i.user == user.username or i.cuet_IPN == user.username %}
+	{% if i.status == 'To be reviewed' or i.status == 'Ongoing' %}
+	<tr>
+		{% if i.slm_number is not Null %}
+		<td><p><form action="history_slm" method="post"  >
+			<button type="submit" method="post" name="slm_number" value="{{i.slm_number}}">
+				{% csrf_token %}
+			{{i.slm_number}}
+			</button>
+		</form>	</p></td>
+		{% else %}
+		<td><p></p></td>
+		{% endif %}
+		<td><p>{{i.responsible}}</p></td>
+		<td><p>{{i.date}}</p></td>
+		<td><p>{{i.budget}}</p></td>
+		<td><p>{{i.ecu}}</p></td>
+		<td><p>{{i.supplier}}</p></td>
+		<td><p>{{i.leading_vehicle_project}}</p></td>
+		<td><p>{{i.description}}</p></td>
+		<td><p>{{i.status}}</p></td>
+		<td><p>{{i.comp_status}}</p></td>
+		<td><p>{{i.circuit_status}}</p></td>
+		<td><p>{{i.enviro_status}}</p></td>
+		<td><p>{{i.process_status}}</p></td>
+		<td><p>{{i.emc_status}}</p></td>
+	</tr>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+</table>
+
+<br><br><br><br><br><br><br><br><br>
+
+
+	<label>SLM Done and Finished:</label>
+<table>
+	<tr>
+		<th>Responsible</th>
+		<th>Open Date</th>
+		<th>Budget</th>
+		<th>ECU</th>
+		<th>Supplier</th>
+		<th>Leading Vehicle Project</th>
+		<th>Description</th>
+		<th>Status</th>
+	</tr>
+	{% for i in objects %}
+	{% if i.user == user.username or i.cuet_IPN == user.username %}
+	{% if i.status == 'Done' %}
+	<tr>
+		<td><p>{{i.responsible}}</p></td>
+		<td><p>{{i.date}}</p></td>
+		<td><p>{{i.budget}}</p></td>
+		<td><p>{{i.ecu}}</p></td>
+		<td><p>{{i.supplier}}</p></td>
+		<td><p>{{i.leading_vehicle_project}}</p></td>
+		<td><p>{{i.description}}</p></td>
+		<td><p>{{i.status}}</p></td>
+	</tr>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+</table>
+
+<br><br><br><br><br><br><br><br><br>
+
+
+	<label>SLM Not Eligible:</label>
+<table>
+	<tr>
+		<th>Responsible</th>
+		<th>Open Date</th>
+		<th>Budget</th>
+		<th>ECU</th>
+		<th>Supplier</th>
+		<th>Leading Vehicle Project</th>
+		<th>Description</th>
+		<th>Status</th>
+		<td>Reason</td>
+	</tr>
+	{% for i in objects %}
+	{% if i.user == user.username or i.cuet_IPN == user.username %}
+	{% if i.status == 'Not Eligible' %}
+	<tr>
+		<td><p>{{i.responsible}}</p></td>
+		<td><p>{{i.date}}</p></td>
+		<td><p>{{i.budget}}</p></td>
+		<td><p>{{i.ecu}}</p></td>
+		<td><p>{{i.supplier}}</p></td>
+		<td><p>{{i.leading_vehicle_project}}</p></td>
+		<td><p>{{i.description}}</p></td>
+		<td><p>{{i.status}}</p></td>
+		<td><p>{{i.reason}}</p></td>
+	</tr>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+</table>
+</div>

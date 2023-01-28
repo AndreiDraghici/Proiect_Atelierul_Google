@@ -1,0 +1,16 @@
+<style>
+body{
+	background-color:#add8e6;
+}</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<body>
+	<h1>Make a user specialist to have acces to step2 slm</h1>
+
+{% load crispy_forms_tags %}
+<form method="post" id="ipn">
+	{% csrf_token %}
+	<label> IPN of User</label>
+	<input type="text" id="ipn_user" name="ipn_user">
+	<button type = "submit" method="POST" id="ipn">Make user a Specialist</button>
+</form>
+</body>

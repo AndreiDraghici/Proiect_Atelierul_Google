@@ -1,0 +1,11 @@
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1> Ultimul tutorial urcat de Super user este afisat catre PDE </h1>
+
+<p>{{ tutorial.title }} </p>
+<p>{{ turorial.version }}</p>
+<p>{{ tutorial.date }}</p>
+<form method="post" action="{{ tutorial.description_file.url }}">
+     {% csrf_token %}
+     <button type="submit">Download</button>
+</form>
+

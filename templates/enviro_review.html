@@ -1,0 +1,64 @@
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1>ENVIRO</h1>
+{% load crispy_forms_tags %}
+<style>
+
+</style>
+<form method="post" id="enviro">
+	{% csrf_token %}
+
+<label> Mounting Part </label>
+<input type="text" id="enviro_mounting" name="enviro_mounting" value="{{slm.enviro_mounting}}">
+<select name="enviro_mounting_status">
+	<option value="{{slm.enviro_mounting_status}}">{{slm.enviro_mounting_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Reliability test plan </label>
+<input type="text" id ="enviro_reliability" name="enviro_reliability" value="{{slm.enviro_reliability}}">
+<select name="enviro_reliability_status">
+	<option value="{{slm.enviro_reliability_status}}">{{slm.enviro_reliability_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Test reports</label>
+<input type="text" id = "enviro_test_reports" name = "enviro_test_reports" value="{{slm.enviro_test_reports}}">
+<select name="enviro_test_reports_status">
+	<option value="{{slm.enviro_test_reports_status}}">{{slm.enviro_test_reports_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>Workload</label>
+<input type="text" id="enviro_time" name="enviro_time" value="{{slm.enviro_time}}">
+<br><br>
+<input type="hidden" id="enviro_responsible" name="enviro_responsible" value="{{ user.Name }}">
+
+
+<label for="status">Status:</label>
+<select name="status">
+	<option value="{{slm.enviro_status}}">{{slm.enviro_status}}</option>
+	<option value="ONGOING">ONGOING</option>
+	<option value="OK">OK</option>
+	<option value="NOK">NOK</option>
+</select>
+<br><br>
+<button type="submit" method="post" >UPDATE SLM</button>
+
+</form>

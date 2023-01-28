@@ -1,0 +1,59 @@
+<h1>HARD</h1>
+{% load crispy_forms_tags %}
+<form method="post" id="comp">
+	{% csrf_token %}
+<label>comp_change</label>
+<input type="text" id="comp_change" name="comp_change" value="{{slm.comp_change_request}}">
+<select name="comp_change_status">
+	<option value="{{slm.comp_change_request_status}}">{{slm.comp_change_request_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>comp_delta</label>
+<input type="text" id ="comp_delta" name="comp_delta" value="{{slm.comp_delta}}">
+<select name="comp_delta_status">
+	<option value="{{slm.comp_delta_status}}">{{slm.comp_delta_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>comp_update</label>
+<input type="text" id = "comp_updated" name = "comp_updated" value="{{slm.comp_updated}}">
+<select name="comp_updated_status">
+	<option value="{{slm.comp_updated_status}}">{{slm.comp_updated_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>Workload</label>
+<input type="text" id="comp_time" name="comp_time" value="{{slm.comp_time}}">
+<br><br>
+<input type="hidden" id="comp_responsible" name="comp_responsible" value="{{ user.Name }}">
+<label for="status">Status:</label>
+<select name="status">
+	<option value="{{slm.comp_status}}">{{slm.comp_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<button type="submit" method="post" id="comp">UPDATE SLM</button>
+</form>
+
+{{ user.Name }}

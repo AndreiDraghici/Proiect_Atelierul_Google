@@ -1,0 +1,231 @@
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+th,td{
+	text-align:center;
+	padding:10px;
+}
+#text{
+	display:table;
+	margin:100 auto;
+
+</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<br>
+<br><br>
+<button color="green">
+<a href="{% url 'export_suivi_xls' %}">Export Suivi</a>
+</button>
+
+
+<br><br><br>
+<table>
+	
+<tr>
+	<TH>SLM NUMBER</TH>
+	<TH>OPEN DATE</TH>
+	<Th>CLOSE DATE</Th>
+	<TH>STATUS</TH>
+	<th>USER</th>
+	<th>PDE</th>
+	<th>CUET</th>
+	<th>CUET IPN</th>	
+	<th>BUDGET</th>	
+	<th>ECU</th>
+	<th>SUPPLIER</th>
+	<th>SYSTEM</th>	
+	<th>ASIL LEVEL</th>
+	<th>PCB COATIG</th>	
+	<th>CURRENT PCB PLANT</th>	
+	<th>PCB ASSEMBLY PLANT TRANSFER</th>
+	<th>DESCRIPTION</th>
+	<th>DESCRIPTION FILE</th>	
+	<th>F4 SHEET</th>
+	<th>F4 SHEET FILE</th>	
+	<th>LEADING VEHICLE PROJECT</th>	
+	<th>LEADING VEHICLE MA DATE</th>
+	<th>APPLICATION DATE</th>
+	<th>CARRY OVER</th>	
+	<th>LUP NR</th>
+	<th>PROOF RNPO</th>	
+	<th>COMP STATUS</th>	
+	<th>COMP CHANGE REQUEST</th>
+	<th>COMP CHANGE REQ STATUS</th>
+	<th>DELTA AECQ</th>
+	<th>DELTA AECQ STATUS</th>
+	<th>COMP1 UPDATE</th>
+	<th>COMP1 UPDATE STATUS</th>	
+	<th>COMPONENTS RESPONSIBLE</th>	
+	<th>LOAD (DAYS)</th>	
+	<th>CIRCUIT STATUS</th>
+	<th>SCHEMATICS</th>	
+	<th>SCHEMATICS STATUS</th>
+	<th>DELTA BOM</th>	
+	<th>DELTA BOM STATUS</th>
+	<th>CIRCUIT CONFIGURATION</th>
+	<th>CIRCUIT CONFIG STATUS</th>
+	<th>INTERFACE SPECIFICATION</th>
+	<th>INTERFACE SPECIFICATION STATUS</th>
+	<th>HARDWARE DESIGN</th>	
+	<th>HARDWARE DESGIN STATUS</th>
+	<th>COMPONENT DERATING</th>
+	<th>COMPONENT DERATING STATUS</th>
+	<th>ABNORMAL CURRENT</th>	
+	<th>ABNORMAL CURRENT STATUS</th>
+	<th>CIRCUIT RESPONSIBLE</th>
+	<th>LOAD (DAYS)</th>
+	<th>ENVIRO STATUS</th>	
+	<th>MOUNTING PART</th>
+	<th>MOUNTING PART STATUS</th>
+	<th>RELIABILITY TEST</th>
+	<th>RELIABILITY TEST STATUS</th>
+	<th>TEST REPORTS REVIEW</th>
+	<th>TEST REPORTS REVIEW STATUS</th>
+	<th>EMC RESPONSIBLE</th>
+	<th>LOAD (DAYS)</th>	
+	<th>PROCESS STATUS</th>	
+	<th>PESES</th>
+	<th>PESES STATUS</th>
+	<th>CUTTING EDGE PROCESS</th>
+	<th>CUTTING EDGE PROCESS STATUS</th>
+	<th>SUPPORT ACTIVITIES</th>	
+	<th>SUPPORT ACTIVITIES STATUS</th>
+	<th>SPP ACTIVITIES</th>
+	<th>SPP ACTIVITIES STATUS</th>
+	<th>OFF-TOOL BOARD QUALITY</th>
+	<th>OFF-TOOL BOARD QUALITY STATUS</th>	
+	<th>PROCESS QUALIFICATION</th>
+	<th>PROCESS QUALIFICATION STATUS</th>
+	<th>PROCESS RESPONSIBLE</th>
+	<th>LOAD (DAYS)</th>
+	<th>EMC STATUS</th>
+	<th>EQUIPMENT TEST PLAN</th>
+	<th>EQUIPMENT TEST PLAN STATUS</th>
+	<th>EQUIPMENT TEST REPORTS</th>	
+	<th>EQUIPMENT TEST REPORTS STATUS</th>
+	<th>VEHICLE TEST REPORTS</th>	
+	<th>VEHICLE TEST REPORTS STATUS</th>
+	<th>EXISTING DEVIATIONS</th>
+	<th>EXISTING DEVIATIONS STATUS</th>
+	<th>EMC RESPONSIBLE</th>
+	<th>LOAD (DAYS)</th>	
+</tr>	
+
+{% for i in objects %}
+<tr>
+	<td>{{ i.slm_number }}</td>
+	<td>{{ i.date }}</td>
+	<td>{{ i.date_close }}</td>
+	<td>{{ i.status }}</td>
+	<td>{{ i.user }}</td>
+	<td>{{ i.responsible }}</td>
+	<td>{{ i.cuet }}</td>
+	<td>{{ i.cuet_IPN }}</td>
+	<td>{{ i.budget }}</td>
+	<td>{{ i.ecu }}</td>
+	<td>{{ i.supplier }}</td>
+	<td>{{ i.system }}</td>
+	<td>{{ i.asil_lvl }}</td>
+	<td>{{ i.pcb_coating }}</td>
+	<td>{{ i.current_pcb_plant }}</td>
+	<td>{{ i.pcb_assembly_plant_transfer }}</td>
+	<td>{{ i.description }}</td>
+	<td>
+		{% if i.description_file  %}
+	<!-- <a href="{{ object.description_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download Description</a> -->
+	    <form method="post" action="{{ i.description_file.url }}">
+		    {% csrf_token %}
+		    <button type="submit">Download</button>
+	    </form>
+	{% else %}
+	    <p>No Description file</p>
+	{% endif %}
+	<td>{{ i.f4_sheet_sent }}</td>
+	<td>
+			{% if i.f4_sheet_sent_file  %}
+	<!-- <a href="{{ object.description_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download Description</a> -->
+	    <form method="post" action="{{ i.f4_sheet_sent_file.url }}">
+		    {% csrf_token %}
+		    <button type="submit">Download</button>
+	    </form>
+	{% else %}
+	    <p>No Description file</p>
+	{% endif %}
+	</td>
+	<td>{{i.leading_vehicle_project}}</td>
+	<td>{{i.leading_vehicle_MA_DATE}}</td>
+	<td>{{i.application_date }}</td>
+	<td>{{i.carry_over }}</td>
+	<td>{{i.lup_number }}</td>
+	<td>{{i.proof_RNPO }}</td>
+	<td>{{i.comp_status }}</td>
+	<td>{{i.comp_change_request }}</td>
+	<td>{{i.comp_change_request_status}}</td>
+	<td>{{i.comp_delta }}</td>
+	<td>{{i.comp_delta_status}}</td>
+	<td>{{i.comp_updated }}</td>
+	<td>{{i.comp_updated_status}}</td>
+	<td>{{i.comp_responsible }}</td>
+	<td>{{i.comp_time }}</td>
+	<td>{{i.circuit_status }}</td>
+	<td>{{i.circuit_schematics }}</td>
+	<td>{{i.circuit_schematics_status}}</td>
+	<td>{{i.circuit_delta_bom}}</td>
+	<td>{{i.circuit_delta_bom_status}}</td>
+	<td>{{i.circuit_configuration }}</td>
+	<td>{{i.circuit_configuration_status}}</td>
+	<td>{{i.circuit_interface }}</td>
+	<td>{{i.circuit_interface_status}}</td>
+	<td>{{i.circuit_hardware_design }}</td>
+	<td>{{i.circuit_hardware_design_status}}</td>
+	<td>{{i.circuit_component_derating }}</td>
+	<td>{{i.circuit_component_derating_status}}</td>
+	<td>{{i.circuit_abnormal_current }}</td>
+	<td>{{i.circuit_abnormal_current_status}}</td>
+	<td>{{i.circuit_responsible }}</td>
+	<td>{{i.circuit_time }}</td>
+	<td>{{i.enviro_status }}</td>
+	<td>{{i.enviro_mounting }}</td>
+	<td>{{i.enviro_mounting_status}}</td>
+	<td>{{i.enviro_reliability }}</td>
+	<td>{{i.enviro_reliability_status}}</td>
+	<td>{{i.enviro_test_reports }}</td>
+	<td>{{i.enviro_test_reports_status}}</td>
+	<td>{{i.enviro_responsible }}</td>
+	<td>{{i.enviro_time }}</td>
+	<td>{{i.process_status }}</td>
+	<td>{{i.process_peses }}</td>
+	<td>{{i.process_peses_status}}</td>
+	<td>{{i.process_cutting_edge }}</td>
+	<td>{{i.process_cutting_edge_status}}</td>
+	<td>{{i.process_support_activities }}</td>
+	<td>{{i.process_support_activities_status}}</td>
+	<td>{{i.process_spp_activities }}</td>
+	<td>{{i.process_spp_activities_status}}</td>
+	<td>{{i.process_off_tool }}</td>
+	<td>{{i.process_off_tool_status}}</td>
+	<td>{{i.process_qualification_review }}</td>
+	<td>{{i.process_qualification_review_status }}</td>
+	<td>{{i.process_responsible }}</td>
+	<td>{{i.process_time }}</td>
+	<td>{{i.emc_status }}</td>
+	<td>{{i.emc_equipment_test_plan }}</td>
+	<td>{{i.emc_equipment_test_plan_status }}</td>
+	<td>{{i.emc_equipment_test_reports }}</td>
+	<td>{{i.emc_equipment_test_reports_status}}</td>
+	<td>{{i.emc_vehicle_test }}</td>
+	<td>{{i.emc_vehicle_test_status}}</td>
+	<td>{{i.emc_existing_deviations }}</td>
+	<td>{{i.emc_existing_deviations_status}}</td>
+	<td>{{i.emc_responsible }}</td>
+	<td>{{i.emc_time }}</td>
+
+
+</tr>
+{% endfor %}
+</table>
+
+

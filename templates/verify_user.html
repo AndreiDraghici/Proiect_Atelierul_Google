@@ -1,0 +1,49 @@
+
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1>VERIFY USER ACCOUNT</h1>
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+th,td{
+	text-align:center;
+	padding:10px;
+}
+#text{
+	display:table;
+	margin:100 auto;
+
+</style>
+
+<table>
+	<tr>
+<th>IPN</th>
+<th>NAME</th>
+<th>EMAIL</th>
+<th>TEAM NAME</th>
+<th>DEPARTMENT</th>
+<th>TEAM LEADER NAME</th>
+<th>VERIFY</th>
+
+</tr>
+{% for i in users %}
+{% if i.verified is False %}
+<tr>
+<td>{{i.username}}</td>
+<td>{{i.Name}}</td>
+<td>{{i.email}}</td>
+<td>{{i.teamname}}</td>
+<td>{{i.department}}</td>
+<td>{{i.teamleadername}}</td>
+<td>
+	<form method="POST" >	{% csrf_token %}
+	<button type="submit" method="POST" action="verify_user" value="{{i.username}}" name="ipn">VERIFY</button>
+</form>
+</td>
+</tr>
+{% endif %}
+{% endfor %}
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<br><br>

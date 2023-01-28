@@ -1,0 +1,226 @@
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+
+th,td{
+	text-align:center;
+	padding:10px;
+}
+
+#specialists{
+	display:table;
+	margin:100 auto;
+}
+#slm{
+	display:table;
+	margin:0 auto;
+}
+
+button{
+	margin:10 50;
+	font-size:25px;
+}
+
+</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<div id="specialists">
+	<center><h1>SLM NR. {{object.slm_number}}</h1></center>
+	<br><br><br><br>
+	<center>
+<table>
+
+	<tr>
+
+	<form action="components" method="post">
+	<th>
+		{% csrf_token %}
+		<button type="submit" name="components" value={{object.slm_number}}>COMPONENTS</button>
+	</th>	
+	</form>
+
+
+	<form action="circuit" method="post">
+	<th>
+		{% csrf_token %}
+		<button type="submit" name="circuit" value={{ object.slm_number }}>CIRCUIT</button>	
+	</th>
+	</form>
+
+
+	<form action="enviro" method="post">
+	<th>
+		{% csrf_token %}
+		<button type="submit" name="enviro" value={{ object.slm_number }}>ENVIRO</button>
+	</th>
+	</form>
+
+	<form action="process" method = "post">
+		{% csrf_token %}
+	<th><button type="submit" name="process" value={{object.slm_number }}>PROCESS</button></th>
+	</form>
+
+	<form action="emc" method="post">
+		{% csrf_token %}
+	<th><button type="submit" name="emc" value={{object.slm_number}}>EMC</button></th
+	</form>
+	</tr>
+	
+	
+	<tr>
+		<td><p>{{ object.comp_status }}</p></td>
+		<td><p>{{ object.circuit_status }}</p></td>
+		<td><p>{{ object.enviro_status }}</p></td>
+		<td><p>{{ object.process_status }}</p></td>
+		<td><p>{{ object.emc_status }}</p></td>
+	</tr>
+	<tr>
+		<td><p>{{object.comp_responsible}}</p></td>
+		<td><p>{{object.circuit_responsible}}</p></td>
+		<td><p>{{object.enviro_responsible}}</p></td>
+		<td><p>{{object.process_responsible}}</p></td>
+		<td><p>{{object.emc_responsible}}</p></td>
+	</tr>
+</table>
+</center>
+</div>
+	
+	
+<div id="slm">
+<table>
+<tr>
+	<th>TOPIC</th>
+	<th>DATA</th>
+</tr>
+
+<tr>
+	<td>User</td>
+	<td>{{object.user}}</td>
+</tr>
+<tr>
+	<td>Responsible</td>
+	<td>{{object.responsible}}</td>
+</tr>
+<tr>
+	<td>CUET</td>
+	<td>{{object.cuet}}</td>
+</tr>
+<tr>
+	<td>CUET IPN</td>
+	<td>{{object.cuet_IPN}}</td>
+</tr>
+<tr>
+	<td>Budget</td>
+	<td>{{object.budget}}</td>
+</tr>
+<tr>
+	<td>Ecu</td>
+	<td>{{object.ecu}}</td>
+</tr>
+<tr>
+	<td>Supplier</td>
+	<td>{{object.supplier}}</td>
+</tr>
+<tr>
+	<td>System</td>
+	<td>{{object.system}}</td}
+</tr>
+<tr>
+	<td>ASIL LVL</td>
+	<td>{{object.asil_lvl}}</td>
+</tr>
+<tr>
+	<td>PCB With Coating</td>
+	<td>{{object.pcb_coating}}</td>
+</tr>
+<tr>
+	<td>Current PCB Assembly Plant</td>
+	<td>{{object.current_pcb_plant}}</td>
+</tr>
+<tr>
+	<td>PCB Assembly Plant After Transfer</td>
+	<td>{{object.pcb_assembly_plant_transfer}}</td>
+</tr>
+<tr>
+	<td>Description</td>
+	<td>{{object.description}}</td>
+</tr>
+<tr>
+        <td>Description File</td>
+	<td>
+	{% if object.description_file %}
+	<!-- <a href="{{ object.description_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download Description</a> -->
+	    <form method="post" action="{{ object.description_file.url }}">
+		    {% csrf_token %}
+		    <button type="submit">Download</button>
+	    </form>
+	{% else %}
+	    <p>No Description file</p>
+	{% endif %}
+	</td>
+</tr>
+
+<tr>
+	<td>F4 sheet sent to SLM PIlot</td>
+	<td>{{object.f4_sheet_sent}}</td>
+</tr>
+
+<tr>
+        <td>F4 sheet sent by the  SLM PIlot</td>
+	<td>
+	{% if object.f4_sheet_sent_file  %}
+	    <form method="post" action="{{ object.f4_sheet_sent_file.url }}">
+                    {% csrf_token %}
+                    <button type="submit">Download</button>
+            </form>
+	{% else %}
+	    <p>"No F4 file</p>
+        {% endif %}
+	</td>
+
+</tr>
+
+<tr>
+	<td>Leading Vehicle Project (Mother Project)</td>
+	<td>{{object.leading_vehicle_project}}</td>
+</tr>
+<tr>
+	<td>Leading Vehicle Project MA Date</td>
+	<td>{{object.leading_vehicle_MA_DATE}}</td>
+</tr>
+<tr>
+	<td>Application Date</td>
+	<td>{{object.application_date}}</td>
+</tr>
+<tr>
+	<td>Carry Over</td>
+	<td>{{object.carry_over}}</td>
+</tr>
+<tr>
+	<td>LUP Number</td>
+	<td>{{object.lup_number}}</td>
+</tr>
+<tr>
+	<td>Proof RNPO</td>
+	<td>{{object.proof_RNPO}}</td>
+</tr>
+
+<tr>
+	<td>Status</td>
+	<td>{{object.status}}</td>
+</tr>
+<tr>
+	<td>DATE</td>
+	<td>{{object.date}}</td>
+</tr>
+
+
+</table>
+
+
+</div>
+
+
+

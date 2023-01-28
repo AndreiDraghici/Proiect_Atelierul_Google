@@ -1,0 +1,227 @@
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+		margin: 0 auto;
+}
+
+th,td{
+	text-align:center;
+	padding:10px;
+
+}
+
+
+</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<div>
+	<center><h1>SLM NR. {{object.slm_number}}</h1></center>
+	<br><br><br>
+<center>
+<form action="{% url 'export_karte_pdf' %}" method="post" id="slm">
+		{% csrf_token %}
+	<button>
+
+	<input type="hidden" id="slm_nr" name="slm_nr" value="{{object.slm_number}}">
+	Export Karte
+	</button>
+</form>
+</center>
+<br><br><Br>
+<table>
+<tr>
+	<th>Criteria</th>
+	<th>Status</th>
+</tr>
+
+<tr>
+	<td>COMPONENTS</td>
+	<td>COMPONENTS</td>
+</tr>
+
+<tr>
+	<td>comp_change</td>
+	<td>{{object.comp_change_request}}</td>
+</tr>
+<tr>
+	<td>comp_delta</td>
+	<td>{{object.comp_delta}}</td>
+</tr>
+<tr>
+	<td>comp_updated</td>
+	<td>{{object.comp_updated}}</td>
+</tr>
+<tr>
+	<td>comp_responsible</td>
+	<td>{{object.comp_responsible}}</td>
+</tr>
+<tr>
+	<td>comp_stauts</td>
+	{% if object.comp_status == "OK" %}
+	<td bgcolor="green">{{object.comp_status}}</td>
+	{% elif object.comp_status == "NOK" %}
+	<td bgcolor="red">{{object.comp_status}}</td>
+	{% else %}
+	<td bgcolor="yellow">{{object.comp_status}}</td>
+	{% endif %}
+</tr>
+<tr>
+	<td>CIRCUIT</td>
+	<td>CIRCUIT</td>
+</tr>
+<tr>
+	<td>circuit_schematics</td>
+	<td>{{object.circuit_schematics}}</td}
+</tr>
+<tr>
+	<td>circuit_delta_bom</td>
+	<td>{{object.circuit_delta_bom}}</td>
+</tr>
+<tr>
+	<td>circuit_configurations</td>
+	<td>{{object.circuit_configuration}}</td>
+</tr>
+<tr>
+	<td>circuit_interface</td>
+	<td>{{object.circuit_interface}}</td>
+</tr>
+<tr>
+	<td>circuit_hardware_design</td>
+	<td>{{object.circuit_hardware_design}}</td>
+</tr>
+<tr>
+	<td>circuit_component_derating</td>
+	<td>{{object.circuit_component_derating}}</td>
+</tr>
+
+
+<tr>
+	<td>circuit_abnormal_current</td>
+	<td>{{object.circuit_abnormal_current}}</td>
+</tr>
+<tr>
+	<td>circuit_responsible</td>
+	<td>{{object.circuit_responsible}}</td>
+</tr>
+<tr>
+	<td>circuit_status</td>
+	{% if object.circuit_status == "OK" %}
+	<td bgcolor="green">{{object.circuit_status}}</td>
+	{% elif object.circuit_status == "NOK" %}
+	<td bgcolor="red">{{object.circuit_status}}</td>
+	{% else %}
+	<td bgcolor="yellow">{{object.circuit_status}}</td>
+	{% endif %}
+</tr>
+<tr>
+	<td>ENVIRO</td>
+	<td>ENVIRO</td>
+</tr>
+<tr>
+	<td>enviro_mounting</td>
+	<td>{{object.enviro_mounting}}</td>
+</tr>
+<tr>
+	<td>enviro_reliability</td>
+	<td>{{object.enviro_reliability}}</td>
+</tr>
+
+<tr>
+	<td>enviro_test_reports</td>
+	<td>{{object.enviro_test_reports}}</td>
+</tr>
+<tr>
+	<td>enviro_responsible</td>
+	<td>{{object.enviro_responsible}}</td>
+</tr>
+<tr>
+	<td>enviro_status</td>
+	{% if object.enviro_status == "OK" %}
+	<td bgcolor="green">{{object.enviro_status}}</td>
+	{% elif object.enviro_status == "NOK" %}
+	<td bgcolor="red">{{object.enviro_status}}</td>
+	{% else %}
+	<td bgcolor="yellow">{{object.enviro_status}}</td>
+	{% endif %}
+</tr>
+<tr>
+	<td>PROCESS</td>
+	<td>PROCESS</td>
+</tr>
+<tr>
+	<td>process_peses</td>
+	<td>{{object.process_peses}}</td>
+</tr>
+<tr>
+	<td>process_cutting_edge</td>
+	<td>{{object.process_cutting_edge}}</td>
+</tr>
+<tr>
+	<td>process_support_activities</td>
+	<td>{{object.process_support_activities}}</td>
+</tr>
+<tr>
+	<td>process_spp_activities</td>
+	<td>{{object.process_spp_activities}}</td>
+</tr>
+<tr>
+	<td>process_off_tool</td>
+	<td>{{object.process_off_tool}}</td>
+</tr>
+<tr>
+	<td>process_qualification_review</td>
+	<td>{{object.process_qualification_review}}</td>
+</tr>
+<tr>
+	<td>process_responsible</td>
+	<td>{{object.process_responsible}}</td>
+</tr>
+<tr>
+	<td>process_status</td>
+	{% if object.process_status == "OK" %}
+	<td bgcolor="green">{{object.process_status}}</td>
+	{% elif object.process_status == "NOK" %}
+	<td bgcolor="red">{{object.process_status}}</td>
+	{% else %}
+	<td bgcolor="yellow">{{object.process_status}}</td>
+	{% endif %}
+</tr>
+<tr>
+	<td>EMC</td>
+	<td>EMC</td>
+</tr>
+<tr>
+	<td>emc_equipment_test_plan</td>
+	<td>{{object.emc_equipment_test_plan}}</td>
+</tr>
+<tr>
+	<td>emc_equipment_test_reports</td>
+	<td>{{object.emc_equipment_test_reports}}</td>
+</tr>
+<tr>
+	<td>emc_vehicle_test</td>
+	<td>{{object.emc_vehicle_test}}</td>
+</tr>
+<tr>
+	<td>emc_existing_deviations</td>
+	<td>{{object.emc_existing_deviations}}</td>
+</tr>
+<tr>
+	<td>emc_responsible</td>
+	<td>{{object.emc_responsible}}</td>
+</tr>
+<tr>
+	<td>emc_status</td>
+	{% if object.emc_status == "OK" %}
+	<td bgcolor="green">{{object.emc_status}}</td>
+	{% elif object.emc_status == "NOK" %}
+	<td bgcolor="red">{{object.emc_status}}</td>
+	{% else %}
+	<td bgcolor="yellow">{{object.emc_status}}</td>
+	{% endif %}
+</tr>
+
+
+</table>
+</div>

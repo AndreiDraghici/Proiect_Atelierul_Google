@@ -1,0 +1,79 @@
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1>EMC</h1>
+{% load crispy_forms_tags %}
+<style>
+
+</style>
+<form method="post" id="emc">
+	{% csrf_token %}
+
+<label> Equipment Test Plan </label>
+<input type="text" id="emc_equipment_test_plan" name="emc_equipment_test_plan" value="{{slm.emc_equipment_test_plan}}">
+<select name="emc_equipment_test_plan_status">
+	<option value="{{slm.emc_equipment_test_plan_status}}">{{slm.emc_equipment_test_plan_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> Equipment Test Reports </label>
+<input type="text" id ="emc_equipment_test_reports" name="emc_equipment_test_reports" value="{{slm.emc_equipment_test_reports}}">
+<select name="emc_equipment_test_reports_status">
+	<option value="{{slm.emc_equipment_test_reports_status}}">{{slm.emc_equipment_test_reports_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Vehicle Test Report</label>
+<input type="text" id = "emc_vehicle_test" name = "emc_vehicle_test" value="{{slm.emc_vehicle_test}}">
+<select name="emc_vehicle_test_status">
+	<option value="{{emc_vehicle_test_status}}">{{slm.emc_vehicle_test_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> Existing Deviations </label>
+<input type="text" id="emc_existing_deviations" name="emc_existing_deviations"value="{{slm.emc_existing_deviations}}">
+<select name="emc_existing_deviations_status">
+	<option value="{{slm.emc_existing_deviations_status}}">{{slm.emc_existing_deviations_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Workload</label>
+<input type="text" id="emc_time" name="emc_time" value="{{slm.emc_time}}">
+<br><br>
+<input type="hidden" id="emc_responsible" name="emc_responsible" value="{{ user.Name }}">
+
+
+<label for="status">Status:</label>
+<select name="status">
+	<option value="ONGOING">ONGOING</option>
+	<option value="OK">OK</option>
+	<option value="NOK">NOK</option>
+</select>
+<br><br>
+<button type="submit" method="post" >UPDATE SLM</button>
+
+</form>
+       
+     

@@ -1,0 +1,67 @@
+{% load static %}
+
+<html>
+	<title>SLM Registration</title>
+        <head>
+                <link href="{% static 'css/base2.css' %}" rel="stylesheet">
+		<img src="../static/logo.jpg">
+	</head>
+<style>
+body {
+	<!-- background-image: url('/static/start.jpg'); -->
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top:10px;
+  text-align:center;
+  
+   
+}
+label{
+  width:700px;
+  clear:left;
+  text-align:left;
+  float:left;
+  margin-left:30px;
+  font-weight:bold;
+}
+input{
+  width:700px;
+  margin-bottom:20px;
+  
+}
+
+form{
+ width:700px;
+ margin:0 auto;
+}
+.asteriskField{
+ display:none;
+}
+strong{
+	display:none;
+}
+
+#div_id_user{
+	display:none;
+}
+#div_id_status{
+	display:none;
+}
+
+</style>
+<body>
+
+{%load crispy_forms_tags%}
+<form method="post" enctype="multipart/form-data"> <!-- ecription type to be added -->
+	{%csrf_token%}
+	<label>
+	{{form|crispy}}
+	</label>
+	<br>
+	<button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+

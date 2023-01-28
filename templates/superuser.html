@@ -1,0 +1,50 @@
+<style>
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+th,td{
+	text-align:center;
+	padding:10px;
+}
+#text{
+	display:table;
+	margin:100 auto;
+}
+body{
+	background-color:#add8e6;
+}
+</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<head><h2>SLM Requests Waiting to be Opened</h2></head>
+<body>
+<div id="text">
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Responsible</th>
+		<th>Open Date</th>
+		<th>Budget</th>
+		<th>ECU</th>
+		<th>Supplier</th>
+		<th>Leading Vehicle Project</th>
+		<th>Description</th>
+		<th>Status</th>
+	</tr>
+	{% for i in objects %}
+	<tr>
+		<td><a href="{% url 'detail' i.id %}">{{i.id}}</a></td>
+		<td><p>{{i.responsible}}</p></td>
+		<td><p>{{i.date}}</p></td>
+		<td><p>{{i.budget}}</p></td>
+		<td><p>{{i.ecu}}</p></td>
+		<td><p>{{i.supplier}}</p></td>
+		<td><p>{{i.leading_vehicle_project}}</p></td>
+		<td><p>{{i.description}}</p></td>
+		<td><p>{{i.status}}</p></td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</body>
+</html>

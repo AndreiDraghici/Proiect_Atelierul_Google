@@ -1,0 +1,60 @@
+<h1> Welcome to tutorial list</h1>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<form action='upload'>
+	<button>Upload Tutorial</button>
+</form>
+
+<style>
+
+table,th,td{
+        border:1px solid black;
+        border-collapse:collapse;
+}
+th,td{
+        text-align:center;
+        padding:10px;
+}
+#text{
+        display:table;
+        margin:100 auto;
+
+</style>
+<div id="text">
+<table>
+        <tr>
+                <th>Title</th>
+                <th>Version</th>
+                <th>Date</th>
+                <th>File</th>
+                <th>Delete</th>
+        </tr>
+        {% for i in tutorials %}
+        <tr>
+                <td><p>{{i.title}}</p></td>
+                <td><p>{{i.version}}</p></td>
+                <td><p>{{i.date}}</p></td>
+		<td>
+                  {% if i.description_file  %}
+                    <form method="post" action="{{ i.description_file.url }}">
+                      {%csrf_token%}
+                      <button type="submit">Download</button>
+                    </form>
+                  {% else %}
+                    <p>No file</p>
+                  {% endif %}
+                </td>
+		<td>
+			<form method="post" action="{% url 'delete_tutorial' i.id  %}" >
+				{%csrf_token%}
+				<button type="submit">Delete</button>
+			</form>
+		</td>
+
+
+        </tr>
+        {% endfor %}
+</table>
+<div>
+
+
+

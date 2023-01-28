@@ -1,0 +1,63 @@
+<html>
+	<title>Home Page</title>
+<style>
+form{
+	margin: 50 auto;
+	width:250px;	
+}
+button{
+	color:black;
+	background-color:orange;
+	width:200px;	
+	height:100px;
+	font-size:32px;
+}
+</style>
+	<body>
+		<br><br><br><br><br><br>
+{% if request.user.is_authenticated %}	
+	{% if request.user.is_superuser is False %}
+		{% if request.user.verified is False %}
+		<meta http-equiv="Refresh" content="0, /account_not_verified/"/>
+		{% endif %}
+	{% endif %}
+		<p> Salut {{user.username}}!</p>
+		 <!-- Button pentru superuser -->
+    {% if request.user.is_superuser %}
+        <form action="{% url 'menu'%}">
+            <button>Super User Menu</button>
+        </form>
+	{% endif %}
+	{% if request.user.is_staff %}
+		<form action=" {% url 'specialist_menu' %}">
+			<button>Specialist Menu </button>
+		</form>
+		<form action=" {% url 'suivi' %}">
+			<button>SUIVI </button>
+		</form>
+		<form action=" {% url 'users_and_staff' %}">
+			<button>ALL ACCOUNTS </button>
+		</form>
+		<form action=" {% url 'history_all' %}">
+			<button>All History </button>
+		</form>	
+		<form action="{% url 'slmregister'%}">
+			<button>Make New SLM</button>	
+		</form>
+	{% endif %}
+	{% if request.user.is_superuser is False %}
+	{% if request.user.is_staff is False %}
+	<form action="{% url 'slmregister'%}">
+		<button>Make New SLM</button>	
+	</form>
+	<br>
+		<form action="{% url 'history'%}">
+			<button>View SLM History</button>
+		</form>
+	{% endif %}
+	{% endif %}
+{% else %}
+		<meta http-equiv="Refresh" content="0, /login"/>
+{% endif %}
+	</body>
+</html>

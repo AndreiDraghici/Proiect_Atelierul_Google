@@ -1,0 +1,104 @@
+<h1>PROCESS</h1>
+{% load crispy_forms_tags %}
+<style>
+
+</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<form method="post" id="process">
+	{% csrf_token %}
+
+<label> PESES </label>
+<input type="text" id="process_peses" name="process_peses" value="{{slm.process_peses}}">
+<select name="process_peses_status">
+	<option value="{{slm.process_peses_status}}">{{slm.process_peses_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Cutting edge process </label>
+<input type="text" id ="process_cutting_edge" name="process_cutting_edge" value="{{slm.process_cutting_edge}}">
+<select name="process_cutting_edge_status">
+	<option value ="{{slm.process_cutting_edge_status}}">{{slm.process_cutting_edge_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>Support activities</label>
+<input type="text" id = "process_support_activities" name = "process_support_activities" value="{{slm.process_support_activities}}">
+<select name="process_support_activities_status">
+	<option value="{{slm.process_support_activities_status}}">{{slm.process_support_activities_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> SPP activities </label>
+<input type="text" id="process_spp_activities" name="process_spp_activities" value="{{slm.process_spp_activities}}">
+<select name="process_spp_activities_status">
+	<option value="{{slm.process_spp_activities_status}}">{{slm.process_spp_activities_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> Off-tool board</label>
+<input type="text" id="process_off_tool" name="process_off_tool" value="{{slm.process_off_tool}}">
+<select name="process_off_tool_status">
+	<option value="{{slm.process_off_tool_status}}">{{slm.process_off_tool_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+        
+<label> Process qualification review </label>
+<input type="text" id="process_qualification_review" name="process_qualification_review" value="{{slm.process_qualification_review}}">
+<select name="process_qualification_review_status">
+	<option value="{{slm.process_qualification_review_status}}">{{slm.process_qualification_review_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>Workload</label>
+<input type="text" id="process_time" name="process_time" value="{{slm.process_time}}">
+<br><Br>
+
+<input type="hidden" id="process_responsible" name="process_responsible" value="{{ user.Name }}">
+
+
+<label for="status">Status:</label>
+<select name="status">
+	<option value="{{slm.process_status}}">{{slm.process_status}}</option>
+	<option value="ONGOING">ONGOING</option>
+	<option value="OK">OK</option>
+	<option value="NOK">NOK</option>
+</select>
+<br><br>
+<button type="submit" method="post" >UPDATE SLM</button>
+
+</form>

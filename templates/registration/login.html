@@ -1,0 +1,56 @@
+{% load static %}
+
+<html>
+	<head>
+		<link href="{% static 'css/base1.css' %}" rel="stylesheet">
+	</head>
+<style>
+body {
+  background-image: url('/static/F2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  margin-top:100px;
+ 
+  text-align:center;
+}
+label{
+	width:100px;
+	clear:left;
+	text-align:right;
+	padding-right:20px;
+}
+input,label{
+	float:left;
+} 
+a{
+padding:20px;
+}
+button{
+margin-top:20px;
+}				
+</style>
+<body>
+	<form  method="post">
+		<div class="container">
+			<br><br>
+			{% csrf_token%}
+			{{form}}
+				
+			<div style="text-align:center">
+				<br><br>
+				<button type=“submit”>Authentification</button>
+			</div>
+
+			<br>
+			<a href="{% url 'register'%}">Create new account</a>
+			<form method='post'>
+			    <a href="tutorial">Tutorial</a>
+			</form>
+
+		
+			<br><br>
+
+	</form>
+</body>
+</html>

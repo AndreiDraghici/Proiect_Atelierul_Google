@@ -1,0 +1,23 @@
+
+<style>
+body{
+	background-color:#add8e6;
+}</style>
+<body>
+	<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<H1>CHANGE IPN OF A SLM TO A NEW ONE</H1>
+
+{% load crispy_forms_tags %}
+<form method="post" id="ipn">
+	{% csrf_token %}
+	<label>OLD IPN</label>
+	<input type="text" id="oldipn" name="oldipn">
+	<br><br>
+	<label>NEW IPN</label>
+	<input type="text" id="newipn" name="newipn">
+	<br><br>
+	<button type="submit" method="POST" id="ipn">CHANGE IPN </button>
+
+</form>
+
+</body>

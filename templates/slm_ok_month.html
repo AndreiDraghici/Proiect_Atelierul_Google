@@ -1,0 +1,11 @@
+<style>
+body{
+	background-color:#add8e6;
+}</style>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<label>Year:</label>
+<form method="post" id="year">
+	{% csrf_token %}
+<input type="text" name="year" id="year"> 
+<button method="post" id="year">Submit</button>
+</form>

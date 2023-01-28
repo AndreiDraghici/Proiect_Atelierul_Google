@@ -1,0 +1,208 @@
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+
+th,td{
+	text-align:center;
+	padding:10px;
+}
+
+#slm{
+	display:table;
+	margin:100 auto;
+}
+
+button{
+	margin:10 50;
+}
+.red{
+	background-color:red;
+}
+.green{
+	background-color:green;
+}
+button{
+	font-size:25px;
+}
+</style>
+{% if request.user.is_authenticated and request.user.is_superuser %}
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<form action="move_ok" method="post">
+<div id="slm">
+	<center><h1>SLM NR. {{object.id}}</h1></center>
+<table>
+<tr>
+	<th>TOPIC</th>
+	<th>DATA</th>
+
+</tr>
+
+<tr>
+	<td>User</td>
+
+	<td><input type="text" id ="user" name="user" value="{{object.user}}"></td>
+</tr>
+<tr>
+	<td>Responsible</td>
+
+	<td><input type="text" id ="responsible" name="responsible" value="{{object.responsible}}" ></td>
+</tr>
+<tr>
+	<td>CUET</td>
+
+	<td><input type="text" id ="cuet" name="cuet" value="{{object.cuet}}"></td>
+</tr>
+<tr>
+	<td>CUET IPN</td>
+
+	<td><input type="text" id ="cuet_ipn" name="cuet_ipn" value="{{object.cuet_IPN}}"></td>
+</tr>
+<tr>
+	<td>Budget</td>
+
+	<td><input type="text" id ="budget" name="budget" value="{{object.budget}}"></td>
+</tr>
+<tr>
+	<td>Ecu</td>
+
+	<td><input type="text" id ="ecu" name="ecu" value="{{object.ecu}}"></td>
+</tr>
+<tr>
+	<td>Supplier</td>
+	
+	<td><input type="text" id ="supplier" name="supplier" value="{{object.supplier}}"></td>
+</tr>
+<tr>
+	<td>System</td>
+
+	<td><input type="text" id ="system" name="system" value="{{object.system}}"></td>
+</tr>
+<tr>
+	<td>ASIL LVL</td>
+
+	<td><input type="text" id ="asil_lvl" name="asil_lvl" value="{{object.asil_lvl}}"></td>
+</tr>
+<tr>
+	<td>PCB With Coating</td>
+
+	<td><input type="text" id ="pcb_coating" name="pcb_coating" value="{{object.pcb_coating}}"></td>
+</tr>
+<tr>
+	<td>Current PCB Assembly Plant</td>
+
+	<td><input type="text" id ="current_pcb_plant" name="current_pcb_plant" value="{{object.current_pcb_plant}}"></td>
+</tr>
+<tr>
+	<td>PCB Assembly Plant After Transfer</td>
+
+	<td><input type="text" id ="pcb_assembly_plant_transfer" name="pcb_assembly_plant_transfer" value="{{object.pcb_assembly_plant_transfer}}"></td>
+</tr>
+<tr>
+	<td>Description</td>
+
+	<td><input type="text" id ="description" name="description" value="{{object.description}}" ></td>
+</tr>
+<tr>
+        <td>Description File</td>
+	<td>
+	{% if object.description_file %}
+	<!-- <a href="{{ object.description_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download Description</a> -->
+	    <form method="post" action="{{ object.description_file.url }}">
+		    {% csrf_token %}
+			<a href="{{ object.description_file.url }}" class="btn btn-primary btn-sm" target="_blank">
+		    <button type="submit">Download</button></a>
+	    </form>
+	{% else %}
+	    <p>No Description file</p>
+	{% endif %}
+	</td>
+</tr>
+
+<tr>
+	<td>F4 sheet sent to SLM PIlot</td>
+
+	<td><input type="text" id ="f4_sheet_sent" name="f4_sheet_sent" value="{{object.f4_sheet_sent}}"></td>
+</tr>
+
+<tr>
+        <td>F4 sheet sent by the  SLM PIlot</td>
+	<td>
+	{% if object.f4_sheet_sent_file  %}
+	    <form method="post" action="{{ object.f4_sheet_sent_file.url }}">
+                    {% csrf_token %}
+                    <button type="submit">Download</button>
+            </form>
+	{% else %}
+	    <p>"No F4 file</p>
+        {% endif %}
+	</td>
+
+</tr>
+
+<tr>
+	<td>Leading Vehicle Project (Mother Project)</td>
+	<td><input type="text" id ="leading_vehicle_project" name="leading_vehicle_project" value="{{object.leading_vehicle_project}}"></td>
+</tr>
+<tr>
+	<td>Leading Vehicle Project MA Date</td>
+	<td><input type="text" id ="leading_vehicle_MA_DATE" name="leading_vehicle_MA_DATE" value="{{object.leading_vehicle_MA_DATE}}"></td>
+</tr>
+<tr>
+	<td>Application Date</td>
+	<td><input type="text" id ="application_date" name="application_date" value="{{object.application_date}}"></td>
+</tr>
+<tr>
+	<td>Carry Over</td>
+	<td><input type="text" id ="carry_over" name="carry_over" value="{{object.carry_over}}"></td>
+</tr>
+<tr>
+	<td>LUP Number</td>
+	<td><input type="text" id ="lup_number" name="lup_number" value="{{object.lup_number}}"></td>
+</tr>
+<tr>
+	<td>Proof RNPO</td>
+
+	<td><input type="text" id ="proof_RNPO" name="proof_RNPO" value="{{object.proof_RNPO}}"></td>
+</tr>
+
+<tr>
+	<td>Status</td>
+	<td>{{object.status}}</td>
+</tr>
+<tr>
+	<td>DATE</td>
+	<td>{{object.date}}</td>
+</tr>
+
+
+</table>
+
+<center>
+		<br><br>
+		{% csrf_token %}
+		<label>SLM NUMBER:</label>
+		<input name="nr"></input>
+		<br>
+		<button type="submit" name="ok" class ="green" value={{object.id}}>OK</button>	
+	</form>
+	<br><br>
+	<br><br>
+	<form action="move_not_ok" method="post">
+		{% csrf_token %}
+		<label>Reason for NOK:</label>
+		<textarea name="Reason" cols="30" rows="5"></textarea>
+		<br>
+		<button type="submit" name="nok" class="red" value={{object.id}}> NOK</button>
+	</form>
+	<br><br>
+	
+
+
+</center>
+</div>
+{% else %}
+<meta http-equiv="Refresh" content="0, /homepage"/>
+{% endif %}

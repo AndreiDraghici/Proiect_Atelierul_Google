@@ -1,0 +1,123 @@
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1>Circuit</h1>
+{% load crispy_forms_tags %}
+<style>
+
+</style>
+<form method="post" id="circuit">
+	{% csrf_token %}
+
+<label> circuit_schematics </label>
+<input type="text" id="circuit_schematics" name="circuit_schematics" value="{{slm.circuit_schematics}}">
+<select name="circuit_schematics_status" >
+	<option value="{{slm.circuit_schematics_status}}">{{slm.circuit_schematics_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>circuit_delta_bom </label>
+<input type="text" id ="circuit_delta_boom" name="circuit_delta_bom" value="{{slm.circuit_delta_bom}}">
+<select name="circuit_delta_bom_status">
+	<option value="{{slm.circuit_delta_bom_status}}">{{slm.circuit_delta_bom_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label>circuit_configuration</label>
+<input type="text" id = "circuit_configuration" name = "circuit_configuration" value="{{slm.circuit_configuration}}">
+<select name="circuit_configuration_status">
+	<option value="{{slm.circuit_configuration_status}}">{{slm.circuit_configuration_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> circuit_interface </label>
+<input type="text" id="circuit_interface" name="circuit_interface" value="{{slm.circuit_interface}}">
+<select name="circuit_interface_status">
+	<option value="{{slm.circuit_interface_status}}">{{slm.circuit_interface_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> circuit_hardware_design </label>
+<input type="text" id="circuit_hardware_design" name="circuit_hardware_design" value="{{slm.circuit_hardware_design}}">
+<select name="circuit_hardware_design_status">
+	<option value="{{slm.circuit_hardware_design_status}}">{{slm.circuit_hardware_design_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+        
+<label> circuit_component_derating </label>
+<input type="text" id="circuit_component_derating" name="circuit_component_derating" value="{{slm.circuit_component_derating}}">
+<select name="circuit_component_derating_status">
+	<option value="{{slm.circuit_component_derating_status}}">{{slm.circuit_component_derating_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+<label> circuit_abnormal_current </label>
+<input type="text" id="circuit_abnormal_current" name="circuit_abnormal_current" value="{{slm.circuit_abnormal_current}}">
+<select name="circuit_abnormal_current_status">
+	<option value="{{slm.circuit_abnormal_current_status}}">{{slm.circuit_abnormal_current_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+
+
+<input type="hidden" id="circuit_responsible" name="circuit_responsible" value="{{ user.Name }}">
+
+
+<label for="status">Status:</label>
+<select name="status">
+	<option value="{{slm.circuit_status}}">{{slm.circuit_status}}</option>
+	<option value="DONE OK">DONE OK</option>
+	<option value="DONE NOK">DONE NOK</option>
+	<option value="ACTION PLAN REQUESTED">ACTION PLAN REQUESTED</option>
+	<option value="NO IMPACT">NO IMPACT</option>
+	<option value="NO OPINION BY HARDWARE">NO OPINION BY HARDWARE</option>
+	<option value="ABANDON BY HARDWARE">ABANDON BY HARDWARE</option>
+</select>
+<br><br>
+<label>Workload</label>
+<input type="text" id="circuit_time" name="circuit_time" value="{{slm.circuit_time}}">
+<br><br>
+<button type="submit" method="post" >UPDATE SLM</button>
+
+</form>
+       
+     

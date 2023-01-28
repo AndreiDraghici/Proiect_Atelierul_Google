@@ -1,0 +1,22 @@
+.container{
+	display:inline-block;
+	width:20%;
+	background:yellow;
+	opacity:1;
+}
+.center{
+	text-align: center;
+}
+.register{
+<!--	display:inline-block; -->
+	width:50%;
+	background:white;
+	opacity:0.7;
+	text-color:white;
+}
+.test12{
+	display:inline-block; 
+	width:70%;
+	background:white;
+	opacity:0.7;
+	text-color:white;

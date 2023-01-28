@@ -1,0 +1,59 @@
+
+<style>
+
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+th,td{
+	text-align:center;
+	padding:10px;
+}
+#text{
+	display:table;
+	margin:100 auto;
+}
+body{
+	background-color:#add8e6;
+}
+</style>
+<body>
+<button onclick="location.href='/homepage/';" id="mybutton" class="float-left submit-button">Home</button>
+<h1>CLOSE SLM</h1>
+<table>
+	<tr>
+<th>SLM NR</th>
+<th>Vehicle</th>
+<th>ECU</th>
+<th>Supplier</th>
+<th>PDE</th>
+<th>COMPONENTS STATUS</th>
+<th>CIRCUIT STATUS</th>
+<th>ENVIRO STATUS</th>
+<th>PROCESS STATUS</th>
+<th>CEM STATUS</th>
+<th>CLOSE SLM</th>
+</tr>
+{% for i in slm %}
+{% if i.status != "Done" %}
+<tr>
+<td>{{i.slm_number}}</td>
+<td>{{ i.leading_vehicle_project }}</td>
+<td>{{ i.ecu }}</td>
+<td>{{ i.supplier }}</td>
+<td>{{i.responsible}}</td>
+<td>{{i.comp_status}}</td>
+<td>{{i.circuit_status}}</td>
+<td>{{i.enviro_status}}</td>
+<td>{{i.process_status}}</td>
+<td>{{ i.emc_status }}</td>
+<td>
+	<form method="POST" >	{% csrf_token %}
+	<button type="submit" method="POST" action="slm_done" value="{{i.slm_number}}" name="nr">CLOSE</button>
+</form>
+</td>
+</tr>
+{% endif %}
+{% endfor %}
+
+</body>
